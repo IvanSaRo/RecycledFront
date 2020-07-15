@@ -1,0 +1,119 @@
+<div class="nav">
+    <div class="cat">
+        <a href="#" class="btn-wrapper" (click)="seleccion($event)">
+            <div class="btn-tail"></div>
+            <div class="btn-body">
+                <p> Productos<span style='font-size: 0.7rem; margin-left: 5px;'></span><i class="material-icons">
+                        single_bed
+                    </i></p>
+            </div>
+        </a>
+    </div>
+
+    <div class="cat">
+        <a href="#" class="btn-wrapper" (click)="seleccion2($event)">
+            <div class="btn-tail"></div>
+            <div class="btn-body">
+                <p> Materiales<span style='font-size: 0.7rem; margin-left: 5px;'></span><i class="material-icons">
+                        shopping_basket
+                    </i></p>
+            </div>
+        </a>
+    </div>
+</div>
+
+<div class="fondosup">
+    <div>
+        <div class="categorias slideInLeft" *ngIf="catProductos">
+            <a href="" [routerLink]="['/items/productos/bisuteria']">
+                <div class="categ">
+                    <img src="../assets/icons/productos/bisuteria.png" alt="">
+                    <h3>Bisutería</h3>
+                </div>
+            </a>
+            <a href="" [routerLink]="['/items/productos/decoracion']">
+                <div class="categ">
+                    <img src="../assets/icons/productos/decoracion.png" alt="">
+                    <h3>Decoración</h3>
+                </div>
+            </a>
+            <a href="" [routerLink]="['/items/productos/muebles']">
+                <div class="categ">
+                    <img src="../assets/icons/productos/muebles.png" alt="">
+                    <h3>Muebles</h3>
+                </div>
+            </a>
+            <a href="" [routerLink]="['/items/productos/electronica']">
+                <div class="categ">
+                    <img src="../assets/icons/productos/electronica.png" alt="">
+                    <h3>Electrónica</h3>
+                </div>
+            </a>
+            <a href="" [routerLink]="['/items/productos/iluminacion']">
+                <div class="categ">
+                    <img src="../assets/icons/productos/iluminacion.png" alt="">
+                    <h3>Iluminación</h3>
+                </div>
+            </a>
+            <a href="" [routerLink]="['/items/productos/miscelanea']">
+                <div class="categ">
+                    <img src="../assets/icons/productos/miscelanea.png" alt="">
+                    <h3>Miscelanea</h3>
+                </div>
+            </a>
+            <a href="" [routerLink]="['/items/productos/moda']">
+                <div class="categ">
+                    <img src="../assets/icons/productos/textil.png" alt="">
+                    <h3>Moda</h3>
+                </div>
+            </a>
+        </div>
+
+
+
+
+        <div class="categorias slideInLeft" *ngIf="catMateriales">
+            <a href="" [routerLink]="['/items/materiales/carton']">
+                <div class="categ">
+                    <img src="../assets/icons/materiales/carton.png" alt="">
+                    <h3>Cartón</h3>
+                </div>
+            </a>
+            <a href="" [routerLink]="['/items/materiales/chatarreria']">
+                <div class="categ">
+                    <img src="../assets/icons/materiales/chatarreria.png" alt="">
+                    <h3>Chatarrería</h3>
+                </div>
+            </a>
+            <a href="" [routerLink]="['/items/materiales/plastico']">
+                <div class="categ">
+                    <img src="../assets/icons/materiales/plastic.png" alt="">
+                    <h3>Plástico</h3>
+                </div>
+            </a>
+            <a href="" [routerLink]="['/items/materiales/electronica-mat']">
+                <div class="categ">
+                    <img src="../assets/icons/materiales/electronica.png" alt="">
+                    <h3>Electrónica</h3>
+                </div>
+            </a>
+            <a href="" [routerLink]="['/items/materiales/madera']">
+                <div class="categ">
+                    <img src="../assets/icons/materiales/madera.png" alt="">
+                    <h3>Madera</h3>
+                </div>
+            </a>
+            <a href="" [routerLink]="['/items/materiales/metal']">
+                <div class="categ">
+                    <img src="../assets/icons/materiales/metal.png" alt="">
+                    <h3>Metal</h3>
+                </div>
+            </a>
+            <a href="" [routerLink]="['/items/materiales/textil']">
+                <div class="categ">
+                    <img src="../assets/icons/materiales/textil.png" alt="">
+                    <h3>Textil</h3>
+                </div>
+            </a>
+        </div>
+    </div>

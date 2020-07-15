@@ -1,0 +1,7 @@
+diff a/src/app/app.module.ts b/src/app/app.module.ts	(rejected hunks)
+@@ -64,4 +64,4 @@
+   providers: [],
+   bootstrap: [AppComponent]
+ })
+-export class AppModule { }
++export class AppModule {}

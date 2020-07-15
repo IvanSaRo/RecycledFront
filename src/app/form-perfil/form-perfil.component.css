@@ -1,0 +1,28 @@
+.imagenloca {
+  width: 226px;
+  height: 223px;
+  background-color: white;
+  border: 2px solid rgb(65, 196, 115);
+  border-radius: 20%;
+  margin-left: 100px;
+  /* margin-left: auto;
+  margin-right: auto;
+  margin-top: 20%;
+  margin-bottom: 20%; */
+  text-align: center;
+}
+
+.formulario{
+  margin: 0 auto;
+   width: 200px;
+}
+
+.formularioFoto{
+  margin: 0 auto;
+   width: 60%;
+}
+
+.modal-body{
+  text-align: center;
+}
+

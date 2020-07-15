@@ -1,0 +1,336 @@
+@import url(https://fonts.googleapis.com/css?family=Open+Sans);
+
+/***************************************************************************************/
+
+*:focus {
+  outline: none;
+}
+
+/*  NAV  */
+
+.nav {
+  background-color: #5bc180;
+  /* background-color: rgb(66, 78, 71); */
+  align-content: space-between;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  height: 5em;
+  align-items: center;
+}
+
+/*  SEARCH  */
+
+.search {
+  width: 100%;
+  display: flex;
+}
+
+.searchTerm {
+  width: 100%;
+  border: 3px solid white;
+  border-right: none;
+
+  height: 1gem;
+  border-radius: 5px 0 0 5px;
+  outline: none;
+  color: #5bc180;
+}
+
+.searchButton {
+  width: 2.5em;
+  height: 1.5em;
+  border: 2px solid white;
+  background: white;
+  align-items: center;
+  color: #5bc180;
+  border-radius: 0 5px 5px 0;
+  cursor: pointer;
+  font-size: 23px;
+  display: block;
+}
+
+.searchButton i {
+  color: #5bc180;
+}
+
+.wrap {
+  width: 30%;
+  position: absolute;
+  top: 5%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.busqueda {
+  display: flex;
+  flex-flow: row nowrap;
+  overflow: none;
+}
+
+img {
+  width: 11%;
+  margin: 10px;
+  /* margin-bottom: 40px; */
+}
+
+i {
+  color: white;
+}
+
+/*  ICONOS  */
+
+.icons {
+  /* margin-right: 3%; */
+  display: flex;
+}
+
+.icons a {
+  margin: 0 1em;
+}
+
+.icons i {
+  width: 100%;
+  font-size: 40px;
+}
+
+/*  CATEGORÍAS */
+
+.categorias {
+  margin: 3em 0;
+}
+
+/*  FOOTER  */
+
+.footer {
+  display: block;
+  background-color: #5bc180;
+  text-align: center;
+  color: white;
+  padding: 2em;
+}
+
+.todoMenosFooter {
+  min-height: calc(100vh - 40px);
+}
+.menuFooter {
+  display: none;
+}
+
+@media screen and (max-width: 653px) {
+  .menuFooter {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: #5bc180;
+    color: white;
+    text-align: center;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: space-around;
+    padding: 0.3em;
+  }
+
+  
+
+  .logo img {
+    width: 20%;
+  }
+
+  .nav .icons {
+    display: none;
+  }
+}
+
+/************************************************************************************************************************************************************************/
+/* NUEVO FOOTER */
+
+/*	 Footer Start
+    ==================================================*/
+
+footer {
+  background: #383838;
+  color: #fff;
+  padding-top: 40px;
+}
+footer .block {
+  color: #b6b6b6;
+}
+
+footer .block p i {
+  color: #dedede;
+  margin-right: 10px;
+  background: #555;
+  width: 24px;
+  line-height: 24px;
+  text-align: center;
+}
+footer .block h4 {
+  margin-bottom: 20px;
+  color: #fff;
+}
+
+footer .block .logo img {
+  text-align: left;
+  display: block;
+}
+footer .block .media-object {
+  border: 1px solid #747474;
+  padding: 2px;
+  height: 75px;
+  width: 93px;
+  overflow: hidden;
+}
+
+footer .block .media-object img {
+  cursor: pointer;
+  transition: 1s;
+}
+footer .block .media-object:hover img {
+  transform: scale(2);
+  transition: 1s;
+}
+
+footer .block .media > .pull-left {
+  margin-bottom: 10px;
+}
+footer .block span {
+  color: #fff;
+}
+.footer-bottom {
+  width: 100%;
+  margin-top: 70px;
+  border-top: 1px solid #2c2c2c;
+  box-shadow: 0 -1px 0 #575656;
+  padding-top: 10px;
+}
+.copyright-text {
+  margin-top: 12px;
+  color: #b6b6b6;
+}
+.copyright-text a {
+  color: #5bc180;
+}
+.copyright-text a:hover {
+  text-decoration: underline;
+}
+
+/*	Social Icon Start
+        ==================================================*/
+
+.social-icon li {
+  float: left;
+  margin-right: 8px;
+}
+.social-icon li a i {
+  color: #fff;
+  font-size: 20px;
+}
+.social-icon li a {
+  padding: 8px;
+  background: #5bc180;
+  display: inline-block;
+}
+
+.social-icon li:hover a {
+  background: white;
+
+  display: inline-block;
+}
+.social-icon li:hover a i {
+  color: #5bc180;
+}
+
+/*----------------Cash Out--------------------*/
+
+.cash-out {
+  padding: 0;
+  margin-bottom: 0px;
+}
+.cash-out li {
+  float: left;
+}
+.cash-out li a {
+  padding-right: 10px;
+}
+.cash-out li a img {
+  -webkit-transition: all 0.2s ease-in-out;
+  -moz-transition: all 0.2s ease-in-out;
+  -ms-transition: all 0.2s ease-in-out;
+  -o-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+}
+.cash-out li a img:hover {
+  opacity: 0.7;
+}
+
+/************************************************************************************************************************************************************************/
+
+/*------------- CSS Absoluto ----------------*/
+body {
+  font-family: 'Montserrat', sans-serif;
+  color: #555;
+  font-size: 14px;
+  font-weight: 300;
+}
+li {
+  list-style: none;
+}
+
+/*Headers*/
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: 'Montserrat', sans-serif;
+  color: #555;
+}
+
+h1 {
+  font-size: 50px;
+}
+h2 {
+  font-size: 40px;
+}
+h3 {
+  font-size: 35px;
+}
+h4 {
+  font-size: 30px;
+}
+h5 {
+  font-size: 25px;
+}
+h6 {
+  font-size: 20px;
+}
+ul {
+  padding-left: 0;
+}
+/*Add space between sections*/
+section + section {
+  margin-top: 50px;
+}
+
+.footer-logo {
+  width: 10em;
+}
+
+h4.connect-heading {
+  cursor: pointer;
+}
+
+h4.connect-heading:hover {
+  color: #5bc180;
+}
+
+.avisoLegal {
+  font-weight: 100;
+  font-size: 10px;
+  text-align: center;
+}

@@ -1,0 +1,579 @@
+<!-- Wrapper -->
+<div class="wrap">
+  <!-- Contenido Perfil -->
+  <main class="cd-main-content ">
+    <div id="content">
+      <div class="resume bg-total">
+        <!-- Cabecera con nombre de Personaje -->
+        <div class="top-head">
+          <div class="row">
+            <div class="col-sm-12 margin-loco">
+              <h4 class="name">
+                {{ userProfile?.nombre }} {{ userProfile?.apellidos }}
+              </h4>
+
+              <!-- ESTE BOTON SE TIENE QUE OCULTAR DEPENDIENDO DE LA URL-->
+              <!-- DEPENDE DE SI EDITAS O NO -->
+
+              <div class="buttonsPerfil" *ngIf="showEdit">
+                <a href="#" class="botonRec editar" (click)="editProfile($event)">Editar Perfil</a>
+                <a class="botonRec salir" [routerLink]="['/users']" routerLinkActive="router-link-active"
+                  (click)="salir()">Cerrar Sesión</a>
+              </div>
+            </div>
+            <div class="col-sm-6"></div>
+          </div>
+        </div>
+
+        <!-- EDIT PROFILE -->
+        <div [style.display]="showModal2 ? 'block' : 'none'" class="modal" id="imagemodal" tabindex="-1" role="dialog"
+          aria-labelledby="myModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h2 class="modal-title" id="myModalLabel">Editar Perfil</h2>
+              </div>
+              <div class="modal-body">
+                <form novalidate #formulario="ngForm" (ngSubmit)="onSubmit2(formulario.value)">
+                  <label>Nombre:</label>
+                  <input type="text" class="form-control" name="nombre" ngModel="{{ userProfile?.nombre }}" />
+                  <label>Apellidos:</label>
+                  <input type="text-area" class="form-control" name="apellidos"
+                    ngModel="{{ userProfile?.apellidos }}" />
+
+                  <input style="display: none;" type="number" name="id" ngModel="{{ userProfile?.id }}" />
+
+                  <label>Comunidad Autónoma:</label>
+                  <input type="text" class="form-control" name="CCAA" ngModel="{{ userProfile?.CCAA }}" />
+
+                  <label>Email:</label>
+                  <input type="text" class="form-control" name="email" ngModel="{{ userProfile?.email }}" />
+
+                  <label>Foto:</label>
+                  <input type="text" class="form-control" name="foto" ngModel="{{ userProfile?.foto }}" />
+                  <input type="submit" class="btn btn-outline-success" value="Enviar" />
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-dark" (click)="cerrar2()">
+                      Cerrar
+                    </button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- El megadiv princial!!!!! -->
+        <div class="wow row">
+          <!-- Lado izquierdo del perfil (barra) -->
+          <div class="col-md-2 bg-1">
+            <div class="bg-bar side-bar">
+              <!-- Detalles Perfil -->
+              <h5 class="tittlegreen">Perfil Eco-Vendedor</h5>
+              <a>
+                <div class="perfilLoco">
+                  <div class="circle-profile">
+                    <img src="{{ userProfile?.foto }}" class="img-responsive" alt="{{ userProfile?.nombre }}" />
+                  </div>
+                </div>
+              </a>
+              <span>
+                <star-rating style="text-align: center;" value="{{ rate }}" totalstars="{{ totalstar }}"
+                  checkedcolor="#ff9f1a" uncheckedcolor="black" size="20px" readonly="false" (rate)="onRate($event)">
+                </star-rating>
+                <p>
+                  <i class="txtpapaya">{{ evaluaciones }} Puntuaciones</i>
+                </p>
+              </span>
+              <button type="button" class="btn btn-outline-info btn-block" style="color: papayawhip;"
+                (click)="valoraciones($event)">
+                <span style="font-size: 1em;" class="material-icons">
+                  comment
+                </span>
+                Valoraciones
+              </button>
+
+              <button type="button" class="btn btn-outline-info btn-block" style="color: papayawhip;"
+                (click)="showProducts($event)">
+                <span style="font-size: 1.5em;" class="material-icons">
+                  single_bed
+                </span>
+                Productos
+              </button>
+
+              <button *ngIf="showEdit" type="button" class="btn btn-outline-info btn-block" style="color: papayawhip;"
+                (click)="showFavorite($event)">
+                <span style="font-size: 1.5em;" class="material-icons">
+                  favorite
+                </span>
+                Favoritos
+              </button>
+
+              <button *ngIf="showEdit2" type="button" class="btn btn-outline-info btn-block" style="color: papayawhip;"
+                (click)="clickMensaje()">
+                Mensaje Privado
+              </button>
+
+              <hr />
+
+              <ul class="personal-info">
+                <li class="row-a">
+                  <p class="txtpapaya">
+                    {{ userProfile?.nombre }}
+                    {{ userProfile?.apellidos }}
+                  </p>
+                </li>
+                <li class="row-b">
+                  <p class="txtpapaya">
+                    <span>Zona: </span> {{ userProfile?.CCAA }}
+                  </p>
+                </li>
+                <div *ngIf="showEdit">
+                  <hr />
+                  <li class="row-a">
+                    <a href="" (click)="showAll($event)">
+                      <p class="show">Mostrar Todo</p>
+                    </a>
+                  </li>
+                </div>
+              </ul>
+
+              <hr />
+
+              <!-- Nivel de seller -->
+              <h5 class="tittlegreen">Nivel de Eco-Vendedor</h5>
+              <div>
+                <p>{{ numeroDeProductos }} producto(s) a la venta</p>
+              </div>
+
+              <hr />
+
+              <!-- Categorias que vente el pavo -->
+              <h5 class="tittlegreen">Categorias a la venta</h5>
+              <div class="social-icon">
+                <ul>
+                  <li [routerLink]="['/items/productos/bisuteria']" class="bisuteria"></li>
+
+                  <li [routerLink]="['/items/productos/electronica']" class="electronica"></li>
+
+                  <li [routerLink]="['/items/productos/iluminacion']" class="iluminacion"></li>
+
+                  <li [routerLink]="['/items/productos/muebles']" class="muebles"></li>
+
+                  <li [routerLink]="['/items/productos/textil']" class="textil"></li>
+                </ul>
+              </div>
+
+              <hr />
+            </div>
+          </div>
+
+          <!-- Contacto -->
+
+          <!-- CONTENIDO -->
+          <div class="col-md-8 productitos">
+            <div class="tab-content tab-green">
+              <!-- TITULO PRODUCTOS -->
+
+              <!--*********************************-->
+              <!--**** PRODUCTOS ITERADOS !!!! ****-->
+              <!--*********************************-->
+
+              <div *ngIf="showProd">
+                <h5 class="tittle locor">
+                  <span class="material-icons">
+                    single_bed
+                  </span>
+                  Productos a la venta
+                </h5>
+                <!----------------------->
+                <!----------------------->
+                <!----------------------->
+                <!----------------------->
+                <!----------------------->
+                <!----------------------->
+                <!-- TARJETAS RECYCLED -->
+                <!----------------------->
+
+                <div class="row">
+                  <div id="cardsDiv" class="wrapper" *ngFor="let item of arrProductosUser" id="{{ item.id_prod }}">
+                    <!-- EDITAR PRODUCTO -->
+
+                    <div [style.display]="showModal ? 'block' : 'none'" class="modal" id="imagemodal" tabindex="-1"
+                      role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                      <div class="modal-dialog">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h2 class="modal-title" id="myModalLabel">
+                              Editar Producto
+                            </h2>
+                          </div>
+                          <div class="modal-body">
+                            <form novalidate #formulario="ngForm" (ngSubmit)="onSubmit(formulario.value)">
+                              <label>Nombre del producto:</label>
+                              <input type="text" class="form-control" name="titulo" ngModel="{{ item.titulo }}" />
+                              <!--  indica que ese input forma parte del formulario -->
+                              <input style="display: none;" type="number" name="id_prod" ngModel="{{ item.id_prod }}" />
+                              <label>Descripción:</label>
+                              <input type="text-area" class="form-control" name="descripcion"
+                                ngModel="{{ item.descripcion }}" />
+
+                              <label>Precio:</label>
+                              <input type="number" class="form-control" name="precio" ngModel="{{ item.precio }}" />
+
+                              <div class="form-group">
+                                <label>Seleccionar imagen:</label>
+                                <input type="file" accept=".png, .jpg, .gif" (change)="onUpload($event, item)">
+                              </div>
+                              <div class="progress">
+                                <div class="progress-bar progress-bar-striped bg-success" role="progressbar"
+                                  [style.width]="(uploadPercent | async) +'%'">
+                                </div>
+                              </div>
+                              <input #imageUser type="hidden" ngModel="{{urlImage | async}}" name="imagen">
+                              <input type="submit" class="btn btn-outline-success" value="Enviar" />
+                              <button type="button" class="btn btn-outline-dark" (click)="cerrar()">
+                                Cerrar
+                              </button>
+                            </form>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="card-recycled">
+                      <div class="container">
+                        <div class="card-header">
+                          <div mat-card-avatar class="example-header-image"></div>
+                        </div>
+                        <div class="top" style="height: 70%;">
+                          <a href="" class="link" [routerLink]="[
+                              '/items/detalle',
+                              item.tipo,
+                              item.id_prod
+                            ]">
+                            <div class="photon">
+                              <h1 style="text-align: center;" [ngStyle]="{
+                                  display:
+                                    item.estatus === 'vendido'
+                                      ? 'block'
+                                      : 'none'
+                                }">
+                                VENDIDO
+                              </h1>
+
+                              <img [ngStyle]="{
+                                  filter:
+                                    item.estatus === 'vendido'
+                                      ? 'grayscale(100%)'
+                                      : 'grayscale(0%)'
+                                }" src="{{ item.imagen }}" alt="{{ item.nombre }}" />
+                            </div>
+                          </a>
+                        </div>
+
+                        <div class="btnCards" *ngIf="showEdit" [ngSwitch]="item.estatus">
+                          <button *ngSwitchCase="'activo'" type="button" class="btn btn-outline-success"
+                            (click)="status(item)">
+                            Vender
+                          </button>
+                          <button *ngSwitchCase="'vendido'" type="button" class="btn btn-outline-success"
+                            (click)="status(item)">
+                            Poner en venta
+                          </button>
+                          <button type="button" class="btn btn-outline-warning" (click)="edit()">
+                            Editar
+                          </button>
+                          <button type="button" class="btn btn-outline-danger" (click)="delete(item)">
+                            Borrar
+                          </button>
+                        </div>
+
+                        <div class="bottom">
+                          <div class="left">
+                            <a class="link" [routerLink]="['/items', item.id_prod]">
+                              <div class="details" style="padding: 0px;">
+                                <h2>
+                                  {{ item.titulo }}
+                                </h2>
+                              </div>
+                            </a>
+                            <a>
+                              <div class="buy" (click)="superClassOn($event)">
+                                <p class="precio">{{ item.precio }} €</p>
+                              </div>
+                            </a>
+                          </div>
+                          <div class="right">
+                            <div class="done opacityloquer">
+                              <i class="material-icons">done</i>
+                            </div>
+                            <div class="details">
+                              <p>
+                                <i _ngcontent-hro-c116="" tabindex="0" [routerLink]="[
+                                    '/users/mensajes/' + [idLocalStorage]
+                                  ]" title="{{ item.descripcion }}">
+                                  {{ item.descripcion | shortString }}
+                                </i>
+                              </p>
+                            </div>
+                            <div class="remove" (click)="superClassOff($event)">
+                              <i class="material-icons">clear</i>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="insideright">
+                        <div class="icon">
+                          <a class="zoomito" [routerLink]="[
+                              '/users/mensajes/' + [idLocalStorage]
+                            ]"><i class="material-icons">chat</i></a>
+                        </div>
+                      </div>
+                      <div class="inside">
+                        <div class="icon">
+                          <i class="material-icons">info_outline</i>
+                        </div>
+                        <div class="contents">
+                          <table>
+                            <tr>
+                              <td class="verdito"><b>Vendedor</b></td>
+                              <td>{{ item.nombre }} {{ item.apellidos }}</td>
+                            </tr>
+                            <tr>
+                              <td><b>Producto</b></td>
+                              <td class="verdito">{{ item.titulo }}</td>
+                            </tr>
+                            <tr>
+                              <td class="verdito"><b>Categoría</b></td>
+                              <td>{{ item.categoria }}</td>
+                            </tr>
+                            <tr>
+                              <td><b>Tipo</b></td>
+                              <td class="verdito">{{ item.tipo }}</td>
+                            </tr>
+                            <tr>
+                              <td class="verdito"><b>Descripción</b></td>
+                              <td>{{ item.descripcion }}</td>
+                            </tr>
+                            <tr>
+                              <td><b>Precio</b></td>
+                              <td class="verdito">{{ item.precio }} €</td>
+                            </tr>
+                          </table>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!--------------------------->
+              <!-- FIN TARJETAS RECYCLED -->
+              <!--------------------------->
+
+              <br />
+
+              <!-- FAVORITOS -->
+              <div *ngIf="showEdit">
+                <div class="favorites" *ngIf="showFav">
+                  <h5 class="tittle locor">
+                    <span class="material-icons">
+                      favorite_border
+                    </span>
+                    Favoritos
+                  </h5>
+
+                  <div id="movecontainer" class="row">
+                    <div id="cardsDiv" class="wrapper" *ngFor="let item of arrFavoritos" id="{{ item.id_prod }}">
+                      <div class="card-recycled">
+                        <div class="container">
+                          <div class="card-header">
+                            <div mat-card-avatar class="example-header-image"></div>
+                          </div>
+                          <div class="top" style="height: 70%;">
+                            <a href="" class="link" [routerLink]="[
+                                '/items/detalle',
+                                item?.tipo,
+                                item?.id_prod
+                              ]">
+                              <div class="photon">
+                                <h1 style="text-align: center; color: wheat;" [ngStyle]="{
+                                    display:
+                                      item?.estatus === 'vendido'
+                                        ? 'block'
+                                        : 'none'
+                                  }">
+                                  VENDIDO
+                                </h1>
+                                <img [ngStyle]="{
+                                    filter:
+                                      item?.estatus === 'vendido'
+                                        ? 'grayscale(100%)'
+                                        : 'grayscale(0%)'
+                                  }" src="{{ item?.imagen }}" alt="{{ item?.titulo }}" />
+                              </div>
+                            </a>
+                          </div>
+                          <div>
+                            <button style="width: 100%;" type="button" class="btn btn-outline-danger btn-block"
+                              (click)="deleteFav(item)">
+                              Quitar de la lista
+                            </button>
+                          </div>
+                          <div class="bottom">
+                            <div class="left">
+                              <a class="link" [routerLink]="[
+                                  '/items/detalle',
+                                  item?.tipo,
+                                  item?.id_prod
+                                ]">
+                                <div class="details" style="padding: 0px;">
+                                  <h2>
+                                    {{ item?.titulo }}
+                                  </h2>
+                                </div>
+                              </a>
+                              <a>
+                                <div class="buy" (click)="superClassOn($event)">
+                                  <p class="precio">{{ item?.precio }} €</p>
+                                </div>
+                              </a>
+                            </div>
+                            <div class="right">
+                              <div class="done opacityloquer">
+                                <i class="material-icons">done</i>
+                              </div>
+                              <div class="details">
+                                <p>
+                                  <i _ngcontent-hro-c116="" style="cursor:pointer;" tabindex="0"
+                                    (click)="clickMensaje2(item?.id)" title="{{ item?.descripcion }}">
+                                    {{ item.descripcion | shortString }}
+                                  </i>
+                                </p>
+                              </div>
+                              <div class="remove" (click)="superClassOff($event)">
+                                <i class="material-icons">clear</i>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="insideright">
+                          <div class="icon">
+                            <a class="zoomito" style="cursor:pointer;" (click)="clickMensaje2(item?.id)"><i
+                                class="material-icons">chat</i></a>
+                          </div>
+                        </div>
+                        <div class="inside">
+                          <div class="icon">
+                            <i class="material-icons">info_outline</i>
+                          </div>
+                          <div class="contents">
+                            <table>
+                              <tr>
+                                <td class="verdito"><b>Vendedor:</b></td>
+                                <td>
+                                  <a href="" (click)="navigateUser($event, item)">
+                                    <img style="width:40%; border-radius: 50%" src="{{ item?.foto }}" alt="" />
+                                    <br />
+                                    {{ item?.nombre }} {{ item?.apellidos }}
+                                  </a>
+                                </td>
+                              </tr>
+                              <tr>
+                                <td><b>Producto:</b></td>
+                                <td class="verdito">{{ item?.titulo }}</td>
+                              </tr>
+                              <tr>
+                                <td class="verdito"><b>Categoría:</b></td>
+                                <td>{{ item?.categoria }}</td>
+                              </tr>
+                              <tr>
+                                <td><b>Tipo:</b></td>
+                                <td class="verdito">{{ item?.tipo }}</td>
+                              </tr>
+                              <tr>
+                                <td class="verdito"><b>Descripción:</b></td>
+                                <td>{{ item?.descripcion }}</td>
+                              </tr>
+                              <tr>
+                                <td><b>Precio:</b></td>
+                                <td class="verdito">{{ item?.precio }} €</td>
+                              </tr>
+                            </table>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- FIN FAVORITOS -->
+
+              <!-- VALORACIONES -->
+
+              <div class="valoracion col-md-12" *ngIf="showValoraciones">
+                <h5 class="tittle locor">
+                  <span class="material-icons">
+                    comment
+                  </span>
+                  Valoraciones
+                </h5>
+                <div class="resenia col-md-12" *ngFor="let valoracion of arrValoraciones">
+                  <div class="perfilValoracion col-md-3">
+                    <a href="" (click)="navigateUser($event, valoracion)">
+                      <img style="width:40%; border-radius: 50%" src="{{ valoracion?.foto }}" alt="" />
+                      <br />
+                      {{ valoracion?.nombre }} {{ valoracion?.apellidos }}
+                    </a>
+                  </div>
+                  <div class="mensaje col-md-6">
+                    <i>
+                      <p style="font-size: 1em;">
+                        {{ valoracion.resenia }}
+                        <span class="material-icons">
+                          format_quote
+                        </span>
+                      </p>
+                    </i>
+                  </div>
+                  <div class="fecha col-md-3">
+                    <p>{{ valoracion?.date | date }}</p>
+                  </div>
+                </div>
+
+                <!-- ESCRIBIR RESEÑA -->
+
+                <div class="card" style="background-color:rgba(94, 196, 131, 0.3);" *ngIf="showEdit2">
+                  <div class="card-body">
+                    <h5 class="card-title" style="color: white;">
+                      <span class="material-icons">
+                        rate_review
+                      </span>
+                      Escribir valoración:
+                    </h5>
+                    <form novalidate #formComentario="ngForm" (ngSubmit)="onSubmit3(formComentario)">
+                      <div class=" form-group">
+                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"
+                          placeholder="Escribe tu valoración..." name="resenia" ngModel required></textarea>
+                      </div>
+                      <input type="submit" style="color: white;" class="btn btn-outline-success" value="Enviar" />
+                    </form>
+                  </div>
+                </div>
+              </div>
+
+              <!--*********************************-->
+              <!--*********************************-->
+              <!--*********************************-->
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="espaciodown bg-total"></div>
+    </div>
+  </main>
+
+  <!-- End Footer -->
+</div>
+<!-- End Page Wrapper -->

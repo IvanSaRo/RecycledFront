@@ -1,0 +1,97 @@
+<body>
+  <!-- Hero Section Begin -->
+  <section class="hero-section set-bg" data-setbg="img/hero.jpg">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-7">
+          <div class="hero-text">
+            <span>{{ articuloSeleccionado.Subtitle }}</span>
+            <h2>{{ articuloSeleccionado.Titulo }}</h2>
+            <a [routerLink]="['/index']" class="primary-btn">Recycled</a>
+          </div>
+        </div>
+        <div class="col-lg-5">
+          <img src="../../assets/img/info/recy.gif" alt="Reciclaje" />
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- Hero Section End -->
+
+  <!-- Counter Section Begin -->
+  <section class="counter-section bg-gradient">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-4">
+          <div class="counter-text">
+            <img
+              src="../../assets/img/info/Leafs.gif"
+              style="width: 250px;"
+              alt="Recycling"
+            />
+          </div>
+        </div>
+        <div class="col-lg-8">
+          <div class="cd-timer" id="countdown">
+            <img
+              src="../../assets/img/info/Logogreen.png"
+              style="width: 600px;"
+              alt="Recycled"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- Counter Section End -->
+
+  <!-- Home About Section Begin -->
+  <section class="home-about-section spad">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6">
+          <div class="ha-pic">
+            <img
+              src="{{ articuloSeleccionado.Image1 }}"
+              alt="{{ articuloSeleccionado.Titulo }}"
+            />
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <div class="ha-text">
+            <h2>{{ articuloSeleccionado.Titulo }}</h2>
+            <p>
+              {{ articuloSeleccionado.Texto1 }}
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- Home About Section End -->
+
+  <!-- Home About Section Begin -->
+  <section class="home-about-section spad">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6">
+          <div class="ha-text">
+            <h2>{{ articuloSeleccionado.Titulo }}</h2>
+            <p>
+              {{ articuloSeleccionado.Texto2 }}
+            </p>
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <div class="ha-pic">
+            <img
+              src="{{ articuloSeleccionado.Image2 }}"
+              alt="{{ articuloSeleccionado.Titulo }}"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- Home About Section End -->
+</body>

@@ -1,0 +1,47 @@
+/*
+______ _____ _______   _______  _      ___________
+| ___ \  ___/  __ \ \ / /  __ \| |    |  ___|  _  \
+| |_/ / |__ | /  \/\ V /| /  \/| |    | |__ | | | |
+|    /|  __|| |     \ / | |    | |    |  __|| | | |
+| |\ \| |___| \__/\ | | | \__/\| |____| |___| |/ /
+\_| \_\____/ \____/ \_/  \____/\_____/\____/|___/
+
+La aplicación líder en menudeo entre traperos
+*/
+
+/* IMPORTANDO MEGACARDS DE RECYCLED */
+@import url(./recycled_card.css);
+
+/* IMPORTANDO SUPERFILTERS DE RECYCLED */
+@import url(./recycled_filters.css);
+
+html,
+body {
+  text-decoration: none;
+  background-color: #e3e3d8;
+  font-family: 'Montserrat', sans-serif;
+
+  padding: 25px;
+}
+
+.photon img{
+  width: 100%;
+  height: 1px;
+}
+
+.colortext {
+  text-decoration: none;
+  font-size: 1em;
+  color: rgb(90, 90, 90);
+}
+
+.colortext:hover {
+  color: white;
+}
+
+#movecontainer {
+  transition: 0.5s;
+}
+
+
+/**/

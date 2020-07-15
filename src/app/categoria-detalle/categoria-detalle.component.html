@@ -1,0 +1,225 @@
+<body>
+  <!--------------------------------------------------------------------------------------->
+  <!--------------------------------------------------------------------------------------->
+  <!------------------------------  VISTA DETALLE DEL PRODUCTO ---------------------------->
+  <!--------------------------------------------------------------------------------------->
+
+  <div class="container">
+    <div class="card">
+      <div class="container-fliud">
+        <div class="wrapper1 row">
+          <div class="preview col-md-6">
+            <div class="preview-pic tab-content">
+              <div class="tab-pane active" id="pic-1">
+                <h1 style="text-align: center; color: red;" [ngStyle]="{
+                    display: idItem?.estatus === 'vendido' ? 'block' : 'none'
+                  }">
+                  ¡VENDIDO!
+                </h1>
+
+                <img [ngStyle]="{
+                    filter:
+                      idItem?.estatus === 'vendido'
+                        ? 'grayscale(100%)'
+                        : 'grayscale(0%)'
+                  }" class="zoomloco" src="{{ idItem?.imagen }}" alt="" />
+              </div>
+              <br />
+
+              <div class="vendedor col-md-6">
+                <a href="" [routerLink]="['/users/' + [idItem?.id]]">
+                  <img style="width:50%; border-radius: 50%;" src="{{ idItem?.foto }}" alt="" />
+                  <h4 class="price">
+                    Vendido por <span>{{ idItem?.nombre }}</span>
+                  </h4>
+                </a>
+              </div>
+
+              <div class="estrellas col-md-6">
+                <br />
+                <br />
+                <p>
+                  Valoración del producto
+                  <span>
+                    <star-rating style="text-align: center;" value="{{ rate }}" totalstars="{{ totalstar }}"
+                      checkedcolor="#ff9f1a" uncheckedcolor="black" size="20px" readonly="false"
+                      (rate)="onRate($event)">
+                    </star-rating><i>{{ evaluaciones }} Evaluaciones</i>
+                  </span>
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="details col-md-6">
+            <h2 class="product-title">{{ idItem?.titulo }}</h2>
+            <p class="product-description">{{ idItem?.descripcion }}</p>
+            <h4 class="price">
+              Precio: <span>{{ idItem?.precio }}€</span>
+            </h4>
+
+            <p class="vote"><strong>Zona: </strong> {{ idItem?.CCAA }}</p>
+            <h5 class="sizes">
+              Categoria:
+              <a href="" [routerLink]="['/items/' + [idItem?.categoria]]">
+                <span class="size" data-toggle="tooltip" title="small">{{
+                  idItem?.categoria
+                }}</span>
+              </a>
+            </h5>
+            <h5 class="colors">
+              Tipo:
+              <a href="" [routerLink]="[
+                  '/items/' + [idItem?.categoria] + '/' + [idItem?.tipo]
+                ]">
+                <span class="size" data-toggle="tooltip" title="small">{{
+                  idItem?.tipo
+                }}</span>
+              </a>
+            </h5>
+
+            <a href="" (click)="addFav($event)">
+              <p [ngStyle]="{ color: fav === true ? 'red' : 'black' }">
+                <strong class="fav"><span class="material-icons">
+                    favorite
+                  </span>
+                  Agregar a favoritos
+                </strong>
+              </p>
+            </a>
+
+            <button class="btn btn-outline-success" type="button" (click)="clickMensaje()">
+              Contactar en el vendedor
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!--------------------------------------------------------------------------------------->
+    <!--------------------------------------------------------------------------------------->
+    <!--------------------  PRODUCTOS SIMILARES (DEL MISMO TIPO) ---------------------------->
+    <!--------------------------------------------------------------------------------------->
+    <br />
+    <br />
+    <div class="productosSimil">
+      <h2>Productos Similares</h2>
+    </div>
+
+    <!----------------------->
+    <!----------------------->
+    <!----------------------->
+    <!----------------------->
+    <!----------------------->
+    <!----------------------->
+    <!-- TARJETAS RECYCLED -->
+    <!----------------------->
+
+    <div id="movecontainer" class="row">
+      <div id="cardsDiv" class="wrapper" *ngFor="let item of arrProductos" id="{{ item.id }}">
+        <div class="card-recycled">
+          <div class="container">
+            <div class="card-header">
+              <div mat-card-avatar class="example-header-image"></div>
+            </div>
+            <div class="top">
+              <a href="" class="link" [routerLink]="['/items/detalle', item?.tipo, item?.id_prod]">
+                <div class="photon">
+                  <h1 style="text-align: center; color: wheat;" [ngStyle]="{
+                      display: item?.estatus === 'vendido' ? 'block' : 'none'
+                    }">
+                    VENDIDO
+                  </h1>
+                  <img [ngStyle]="{
+                      filter:
+                        item?.estatus === 'vendido'
+                          ? 'grayscale(100%)'
+                          : 'grayscale(0%)'
+                    }" src="{{ item.imagen }}" alt="{{ item?.titulo }}" />
+                </div>
+              </a>
+            </div>
+            <div class="bottom">
+              <div class="left">
+                <a class="link" [routerLink]="['/items/detalle', item?.tipo, item?.id_prod]">
+                  <div class="details">
+                    <h2>
+                      {{ item.titulo }}
+                    </h2>
+                  </div>
+                </a>
+                <a>
+                  <div class="buy" (click)="superClassOn($event)">
+                    <p class="precio">{{ item?.precio }} €</p>
+                  </div>
+                </a>
+              </div>
+              <div class="right">
+                <div class="done opacityloquer">
+                  <i class="material-icons">done</i>
+                </div>
+                <div class="details">
+                  <p>
+                    <i _ngcontent-hro-c116="" style="cursor:pointer;" tabindex="0" (click)="clickMensaje2(item.id)"
+                      title="{{ item.descripcion }}">
+                      {{ item.descripcion | shortString }}
+                    </i>
+                  </p>
+                </div>
+                <div class="remove" (click)="superClassOff($event)">
+                  <i class="material-icons">clear</i>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="insideright">
+            <div class="icon">
+              <a class="zoomito" style="cursor:pointer; color:white" (click)="clickMensaje2(item.id)"><i
+                  class="material-icons">chat</i></a>
+            </div>
+          </div>
+          <div class="inside">
+            <div class="icon"><i class="material-icons">info_outline</i></div>
+            <div class="contents">
+              <table>
+                <tr>
+                  <td class="verdito"><b>Vendedor</b></td>
+                  <td>
+                    <a href="" [routerLink]="['/users/' + [item?.id]]">
+                      <img style="width:40%; border-radius: 50%" src="{{ item?.foto }}" alt="" />
+                      <br />
+                      {{ item.nombre }} {{ item?.apellidos }}
+                    </a>
+                  </td>
+                </tr>
+                <tr>
+                  <td><b>Producto</b></td>
+                  <td class="verdito">{{ item?.titulo }}</td>
+                </tr>
+                <tr>
+                  <td class="verdito"><b>Categoría</b></td>
+                  <td>{{ item?.categoria }}</td>
+                </tr>
+                <tr>
+                  <td><b>Tipo</b></td>
+                  <td class="verdito">{{ item?.tipo }}</td>
+                </tr>
+                <tr>
+                  <td class="verdito"><b>Descripción</b></td>
+                  <td>{{ item?.descripcion }}</td>
+                </tr>
+                <tr>
+                  <td><b>Precio</b></td>
+                  <td class="verdito price">{{ item?.precio }} €</td>
+                </tr>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--------------------------->
+  <!-- FIN TARJETAS RECYCLED -->
+  <!--------------------------->
+</body>

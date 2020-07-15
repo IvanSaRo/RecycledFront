@@ -1,0 +1,227 @@
+<div class="container">
+  <h2 style="text-align: center;">Registro de nuevo Usuario</h2>
+  <mat-horizontal-stepper [linear]="isLinear" #stepper>
+    <mat-step [stepControl]="thirdFormGroup">
+      <form [formGroup]="thirdFormGroup">
+        <ng-template matStepLabel>Datos Personales</ng-template>
+        <div class="formulario">
+          <h3>Datos Personales</h3>
+          <mat-form-field>
+            <mat-label>Nombre</mat-label>
+            <input
+              matInput
+              placeholder="Pon aquí tu nombre"
+              formControlName="nombre"
+              required
+            />
+          </mat-form-field>
+          <mat-form-field>
+            <mat-label>Apellidos</mat-label>
+            <input
+              matInput
+              placeholder="Pon aquí tu apellido"
+              formControlName="apellidos"
+              required
+            />
+          </mat-form-field>
+          <br />
+          <mat-form-field>
+            <mat-label>Comunidad Autónoma</mat-label>
+            <input
+              class="example-full-width"
+              matInput
+              placeholder="Ej. Madrid"
+              formControlName="CCAA"
+              required
+            />
+          </mat-form-field>
+          <div>
+            <button mat-button matStepperNext>Siguiente</button>
+          </div>
+        </div>
+      </form>
+    </mat-step>
+
+    <mat-step [stepControl]="thirdFormGroup">
+      <form [formGroup]="thirdFormGroup">
+        <ng-template matStepLabel>Email</ng-template>
+        <div class="formulario">
+          <h3>Email</h3>
+          <mat-form-field class="example-full-width">
+            <mat-label>Email</mat-label>
+
+            <input
+              matInput
+              placeholder="Ej. pat@example.com"
+              formControlName="email"
+              required
+            />
+            <mat-error
+              *ngIf="
+                emailFormControl.hasError('email') &&
+                !emailFormControl.hasError('required')
+              "
+            >
+              Introduce una dirección de email válido
+            </mat-error>
+            <mat-error *ngIf="emailFormControl.hasError('required')">
+              Email es <strong>obligatorio</strong>
+            </mat-error>
+          </mat-form-field>
+          <div>
+            <button mat-button matStepperPrevious>Volver</button>
+            <button mat-button matStepperNext>Siguiente</button>
+          </div>
+        </div>
+      </form>
+    </mat-step>
+
+    <mat-step [stepControl]="thirdFormGroup">
+      <form [formGroup]="thirdFormGroup">
+        <ng-template matStepLabel>Contraseña</ng-template>
+        <div class="formulario">
+          <h3>Contraseña</h3>
+          <mat-form-field class="example-full-width">
+            <mat-label>Introduce tu contraseña</mat-label>
+            <input
+              matInput
+              [type]="hide ? 'password' : 'text'"
+              formControlName="password"
+              required
+            />
+            <mat-error
+              *ngIf="
+                thirdFormGroup.hasError('password') &&
+                !thirdFormGroup.hasError('required')
+              "
+            >
+              Introduce una dirección de email válido
+            </mat-error>
+            <button
+              mat-icon-button
+              matSuffix
+              (click)="hide = !hide"
+              [attr.aria-label]="'Hide password'"
+              [attr.aria-pressed]="hide"
+            >
+              <mat-icon>{{ hide ? "visibility_off" : "visibility" }}</mat-icon>
+            </button>
+          </mat-form-field>
+          <br />
+          <mat-form-field class="example-full-width">
+            <mat-label>Repite la contraseña</mat-label>
+            <input
+              matInput
+              [type]="hide ? 'password' : 'text'"
+              formControlName="repite_password"
+              required
+            />
+            <button
+              mat-icon-button
+              matSuffix
+              (click)="hide = !hide"
+              [attr.aria-label]="'Hide password'"
+              [attr.aria-pressed]="hide"
+            >
+              <mat-icon>{{ hide ? "visibility_off" : "visibility" }}</mat-icon>
+            </button>
+          </mat-form-field>
+          <div>
+            <button mat-button matStepperPrevious>Volver</button>
+            <button mat-button matStepperNext>Siguiente</button>
+          </div>
+        </div>
+      </form>
+    </mat-step>
+
+    <mat-step [stepControl]="thirdFormGroup">
+      <form [formGroup]="thirdFormGroup">
+        <ng-template matStepLabel>Foto de Perfil</ng-template>
+        <div class="formularioFoto">
+          <h3>Foto de Perfil</h3>
+          <mat-form-field>
+            <mat-label>Fotografía</mat-label>
+            <input
+              matInput
+              placeholder="Pon aquí una url con tu foto"
+              formControlName="foto"
+              required
+              (keyup)="emitPost($event)"
+            />
+          </mat-form-field>
+          <img
+            class="imagenloca"
+            [src]="mostrarImagen()"
+            alt="La imágen se mostrará cuando escribas la URL"
+          />
+          <div>
+            <button mat-button matStepperPrevious>Volver</button>
+            <button mat-button matStepperNext>Siguiente</button>
+          </div>
+        </div>
+      </form>
+    </mat-step>
+
+    <mat-step>
+      <ng-template matStepLabel>Hecho!</ng-template>
+      <div class="formulario">
+        <h3>Ya está todo!</h3>
+        <button
+          type="submit"
+          (click)="onSubmit()"
+          mat-raised-button
+          color="primary"
+          [disabled]="!thirdFormGroup.valid"
+        >
+          Regístrate!
+        </button>
+        <mat-error *ngIf="checkMail">
+          Error: La dirección de email se encuentra en uso.
+        </mat-error>
+        <div>
+          <button mat-button matStepperPrevious>Volver</button>
+          <button mat-button (click)="stepper.reset()">Reset</button>
+        </div>
+      </div>
+    </mat-step>
+  </mat-horizontal-stepper>
+</div>
+
+<div
+  [style.display]="showModal ? 'block' : 'none'"
+  class="modal"
+  id="imagemodal"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="myModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title" id="myModalLabel">Nuevo usuario</h2>
+      </div>
+      <div class="modal-body">
+        <h2>¡¡Registro completado!!</h2>
+        <h3>Ya puedes empezar a disfrutar de Recycled!</h3>
+        <button
+          type="submit"
+          class="btn btn-outline-success"
+          [routerLink]="['/users/login']"
+        >
+          Login
+        </button>
+        <div class="modal-footer">
+          <button
+            type="button"
+            class="btn btn-outline-dark"
+            data-dismiss="modal"
+            [routerLink]="['/index']"
+          >
+            Cerrar
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

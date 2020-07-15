@@ -1,0 +1,51 @@
+/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
+
+h1, h2, h3, h4, h5, p, a{
+  font-family: 'Montserrat', sans-serif;
+}
+
+
+
+
+
+html,
+body {
+  height: 100%;
+  background-color: #e3e3d8;
+  
+}
+body {
+  margin: 0;
+  font-family: 'Montserrat', sans-serif;
+  /* font-family: Roboto, "Helvetica Neue", sans-serif; */
+}
+
+.mat-step-header .mat-step-icon-selected, .mat-step-header .mat-step-icon-state-done, 
+.mat-step-header .mat-step-icon-state-edit {
+    background-color: #5bc180 !important;
+    color: white !important;
+}
+
+/*******************************************/
+/************* MEDIA QUERIES **************/
+/*****************************************/
+
+@media (min-width: 320px) {
+  /* smartphones, portrait iPhone, portrait 480x320 phones (Android) */
+}
+@media (min-width: 480px) {
+  /* smartphones, Android phones, landscape iPhone */
+}
+@media (min-width: 600px) {
+  /* portrait tablets, portrait iPad, e-readers (Nook/Kindle), landscape 800x480 phones (Android) */
+}
+@media (min-width: 801px) {
+  /* tablet, landscape iPad, lo-res laptops ands desktops */
+}
+@media (min-width: 1025px) {
+  /* big landscape tablets, laptops, and desktops */
+}
+@media (min-width: 1281px) {
+  /* hi-res laptops and desktops */
+}

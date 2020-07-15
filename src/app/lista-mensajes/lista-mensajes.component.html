@@ -1,0 +1,71 @@
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css" />
+
+<!------ Include the above in your HEAD tag ---------->
+
+<div class="todo">
+  <div class="messaging">
+    <div class="inbox_msg">
+      <div class="inbox_people">
+        <div class="headind_srch">
+          <div class="recent_heading">
+            <h4>Conversaciones</h4>
+          </div>
+        </div>
+        <div class="inbox_chat scroll">
+          <div>
+            <div class="chat_list" *ngFor="let conversacion of arrConversaciones" (click)="handleClick(conversacion)"
+              title="Ver mensajes con este usuario">
+              <div class="chat_people" *ngIf="conversacion.idrecibe != idUsuario" class="flex">
+                <div class="chat_img">
+                  <img src="{{ conversacion.fotorecibe }}" alt="sunil" />
+                </div>
+                <div class="chat_ib">
+                  <h5>
+                    {{ conversacion.nombrerecibe }}
+                  </h5>
+                  <p>{{ conversacion.ccaarecibe }}</p>
+                </div>
+                <i class="material-icons" (click)="borrarConversacion(conversacion.id_con)" title="Borrar">delete</i>
+              </div>
+              <div class="chat_people" *ngIf="conversacion.idrecibe == idUsuario" class="flex">
+                <div class="chat_img">
+                  <img src="{{ conversacion.fotocrea }}" alt="sunil" />
+                </div>
+                <div class="chat_ib">
+                  <h5>
+                    {{ conversacion.nombrecrea }}
+                  </h5>
+                  <p>{{ conversacion.ccaacrea }}</p>
+                </div>
+                <i class="material-icons" (click)="borrarConversacion(conversacion.id_con)" title="Borrar">delete</i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <app-mensaje-detalle [conversacion]="con"></app-mensaje-detalle>
+    </div>
+  </div>
+</div>
+
+<!-- <div class="messages" appScrollDirective infiniteScroll [infiniteScrollUpDistance]="9.9" [scrollWindow]="false" [infiniteScrollThrottle]="1500"
+    (scrolledUp)="loadMore()">
+    <mat-spinner *ngIf="loading" [diameter]="50"></mat-spinner>
+    <ul>
+      <ng-container *ngFor="let list of messageList; trackBy:key">
+        <li *ngIf="list?.user_type === 'User'" class="sent">
+          <span>
+            <p>{{list?.message}}</p>
+            <small>{{list?.message_timestamp}}</small>
+          </span>
+        </li>
+        <li *ngIf="list?.user_type === 'Agent'" class="replies">
+          <span>
+            <p>{{list?.message}}</p>
+            <small>{{list?.message_timestamp}}</small>
+          </span>
+        </li>
+      </ng-container>
+    </ul>
+  </div> -->

@@ -1,0 +1,134 @@
+<!-- Creates the bootstrap modal where the image will appear -->
+<div [style.display]="showModal ? 'block' : 'none'" class="modal" id="imagemodal" tabindex="-1" role="dialog"
+    aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title" id="myModalLabel">Vender un nuevo producto</h2>
+            </div>
+            <div class="modal-body">
+                <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+                    <div class="form-group">
+                        <label>Nombre del Producto</label>
+                        <input type="text" formControlName="titulo" class="form-control"
+                            [ngClass]="{ 'is-invalid': submitted && f.titulo.errors }" />
+                        <div *ngIf="submitted && f.titulo.errors" class="invalid-feedback">
+                            <div *ngIf="f.titulo.errors.required">Tienes que poner un titulo al producto</div>
+                            <div *ngIf="f.titulo.errors.minlength">El titulo del producto debe tener al menos 2 letras
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="form-group">
+                        <label>Descripción</label>
+                        <textarea formControlName="descripcion" class="form-control"
+                            [ngClass]="{ 'is-invalid': submitted && f.descripcion.errors }"></textarea>
+                        <div *ngIf="submitted && f.descripcion.errors" class="invalid-feedback">
+                            <div *ngIf="f.descripcion.errors.required">Tienes que poner una descripción al producto
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Precio</label>
+                        <input type="number" formControlName="precio" class="form-control"
+                            [ngClass]="{ 'is-invalid': submitted && f.precio.errors }" />
+                        <div *ngIf="submitted && f.precio.errors" class="invalid-feedback">
+                            <div *ngIf="f.titulo.errors.required">Tienes que poner un precio al producto</div>
+                            <div *ngIf="f.precio.errors.pattern">como
+                                máximo dos decimales y sin símbolos, por ejemplo: 10.50</div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Categoría:</label>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="categoria" id="exampleRadios1"
+                                value="producto" checked (click)="handleClick1()" formControlName="categoria">
+                            <label class="form-check-label" for="exampleRadios1">
+                                Producto
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="categoria" id="exampleRadios2"
+                                value="material" (click)="handleClick2()" formControlName="categoria">
+                            <label class="form-check-label" for="exampleRadios2">
+                                Material
+                            </label>
+                        </div>
+                    </div>
+
+
+
+                    <div class="form-group" *ngIf="showProducts">
+                        <label>Tipo de Producto</label>
+                        <select class="form-control" formControlName="tipo" (change)="emit($event)">
+                            <option value="bisuteria">Bisutería</option>
+                            <option value="decoracion">Decoración</option>
+                            <option value="muebles">Muebles</option>
+                            <option value="electronica">Electrónica</option>
+                            <option value="iluminacion">Iluminación</option>
+                            <option value="miscelanea">Miscelánea</option>
+                            <option value="moda">Moda</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group" *ngIf="showMaterials">
+                        <label>Tipo de Material</label>
+                        <select class="form-control" formControlName="tipo" (change)="emit($event)">
+                            <option value="carton">Cartón</option>
+                            <option value="chatarreria">Chatarrería</option>
+                            <option value="plastico">Plástico</option>
+                            <option value="electronica-mat">Electrónica</option>
+                            <option value="madera">Madera</option>
+                            <option value="metal">Metal</option>
+                            <option value="textil">Textil</option>
+                        </select>
+                    </div>
+
+
+                    <!-- <div class="form-group">
+                        <label>Fotografía</label>
+                        <div class="input-group mb-3">
+
+                            <input type="text" formControlName="imagen" class="form-control"
+                                [ngClass]="{ 'is-invalid': submitted && f.imagen.errors }"
+                                placeholder="Introduce una url válida con la imágen del producto" />
+                            <div *ngIf="submitted && f.imagen.errors" class="invalid-feedback">
+                                <div *ngIf="f.imagen.errors.required">Tienes que poner una url con la imagen del
+                                    producto.
+                                </div>
+                            </div>
+                        </div>
+                    </div> -->
+
+                    <div class="form-group">
+                        <h5>Seleccionar image:</h5>
+                        <input type="file" accept=".png, .jpg, .gif" (change)="onUpload($event)">
+                    </div>
+                    <div class="progress">
+                        <div class="progress-bar progress-bar-striped bg-success" role="progressbar"
+                            [style.width]="(uploadPercent | async) +'%'">
+
+                            <!-- <span class="progressText" *ngIf="urlImage | async">
+                                          Ok!!</span> -->
+                        </div>
+                    </div>
+                    <input #imageUser type="hidden" [value]="urlImage | async" formControlName="imagen">
+
+
+                    <img style="max-width: 400px;" src="{{urlImage | async}}" alt="">
+                    <label style="color:white;" id='1'>{{urlImage | async}}</label>
+
+                    <button type="submit" class="btn btn-outline-success">Subir
+                        Producto!</button>
+                </form>
+
+
+                <button type="button" class="btn btn-outline-dark" data-dismiss="modal" (click)="hide()">Cerrar</button>
+            </div>
+
+
+        </div>
+    </div>

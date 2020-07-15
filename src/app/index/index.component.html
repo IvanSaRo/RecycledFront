@@ -1,0 +1,101 @@
+<body>
+  <!-- Banner -->
+  <section id="banner">
+    <div class="inner">
+      <p class="logo">
+        Recycled, tu marketplace de compra-venta de productos Reciclados,
+        upcycling y materiales.
+      </p>
+      <header class="logillo">
+        <h1>Recycled</h1>
+        <i class="material-icons iconlogo">
+          eco
+        </i>
+
+        <img class="logos" src="../../assets/logos/final/Logo002.png" alt="Recycled" />
+      </header>
+
+      <div class="flex ">
+        <div class="pointer" [routerLink]="['/items/producto']" routerLinkActive="router-link-active">
+          <i class="material-icons icon">single_bed</i>
+          <h3>Productos</h3>
+          <p>Productos Reciclados / Upcycling</p>
+        </div>
+
+        <div class="pointer" [routerLink]="['/items/material']" routerLinkActive="router-link-active">
+          <i class="material-icons icon">format_paint</i>
+          <h3>Materiales</h3>
+          <p>Materiales para reciclaje</p>
+        </div>
+      </div>
+
+      <footer>
+        <a (click)="checkLogin()" routerLinkActive="router-link-active" class="button">Comenzar</a>
+      </footer>
+    </div>
+  </section>
+
+  <!-- Footer falso -> Se trata de la sección destacados -->
+  <footer id="footer">
+    <div class="inner">
+      <!-- CARRUSEL DE RECYCLED -->
+      <div>
+        <app-carousel-recycled></app-carousel-recycled>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Hero Parte 1 -->
+  <div class="heroRecycled"></div>
+
+  <!-- Upcycling y Recycling -->
+  <section id="three" class="wrapper align-center ">
+    <div class="inner">
+      <div class="flex flex-2">
+        <article>
+          <div class="image round">
+            <img class="imagenDoble" [routerLink]="['/info/upcycling']" src="../../assets/img/imagen01.png"
+              alt="Recycling" />
+          </div>
+          <header>
+            <h3>Upcycling</h3>
+          </header>
+          <p>
+            Reutilizando materiales deshechados<br />
+            para crear nuevos productos artesanales<br />
+            y nuevos materiales de una mayor<br />
+            calidad que los originales.
+          </p>
+          <footer>
+            <a [routerLink]="['/info/upcycling']" routerLinkActive="router-link-active" class="button">Materiales para
+              Upcycling</a>
+          </footer>
+        </article>
+        <article>
+          <div class="image round">
+            <img class="imagenDoble" [routerLink]="['/info/recycling']" src="../../assets/img/imagen02.png"
+              alt="Upcycling" />
+          </div>
+          <header>
+            <h3>Recycling</h3>
+          </header>
+          <p>
+            Procesando materiales deshechados<br />
+            con el objetivo de recuperar la parte <br />
+            útil de dichos materiales para la <br />
+            construcción de nuevos productos.
+          </p>
+          <footer>
+            <a [routerLink]="['/info/recycling']" routerLinkActive="router-link-active" class="button">Productos
+              reciclados</a>
+          </footer>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Hero Parte 2 -->
+  <div class="heroRecycled"></div>
+
+  <div></div>
+</body>

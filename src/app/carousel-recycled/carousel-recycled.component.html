@@ -1,0 +1,418 @@
+<!-- CARRUSEL RECYCLED -->
+<!----------------------->
+
+<h1>Productos Destacados</h1>
+
+<div class="container">
+  <div class="row">
+    <div id="carousel" class="carousel slide" data-ride="carousel">
+      <ol class="carousel-indicators">
+        <li data-target="#carousel" data-slide-to="0" class="active"></li>
+        <li data-target="#carousel" data-slide-to="1"></li>
+      </ol>
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <div class="d-none d-lg-block">
+            <div class="slide-box">
+              <!--------------------------------------------------------------------->
+              <!--------------------------------------------------------------------->
+              <!-------------------------------SLIDE 1------------------------------->
+
+              <!-- PANTALLA GRANDE -->
+              <!---->
+              <div
+                class="card"
+                *ngFor="let product of arrProducts | slice: 0:4"
+              >
+                <div class="card__image-holder">
+                  <img
+                    [routerLink]="[
+                      '/items/detalle',
+                      product.tipo,
+                      product.id_prod
+                    ]"
+                    class="card__image"
+                    src="{{ product.imagen }}"
+                    alt="{{ product.titulo }}"
+                  />
+                </div>
+                <div class="card-title">
+                  <a
+                    [routerLink]="[
+                      '/items/detalle',
+                      product.tipo,
+                      product.id_prod
+                    ]"
+                    class="toggle-info btn"
+                  >
+                    <span class="left"></span>
+                    <span class="right"></span>
+                  </a>
+                  <h2>
+                    {{ product.titulo }}
+                    <small>{{ product.precio }} €</small>
+                  </h2>
+                </div>
+                <div class="card-flap flap1">
+                  <!-- <div class="card-description">
+                    {{ product.descripcion }}
+                  </div> -->
+                </div>
+              </div>
+              <!---->
+              <!---->
+            </div>
+          </div>
+          <div class="d-none d-md-block d-lg-none">
+            <div class="slide-box">
+              <!-- PANTALLA MEDIANA -->
+              <!---->
+              <div
+                class="card"
+                *ngFor="let product of arrProducts | slice: 0:3"
+              >
+                <div class="card__image-holder">
+                  <img
+                    [routerLink]="[
+                      '/items/detalle',
+                      product.tipo,
+                      product.id_prod
+                    ]"
+                    class="card__image"
+                    src="{{ product.imagen }}"
+                    alt="{{ product.titulo }}"
+                  />
+                </div>
+                <div class="card-title">
+                  <a
+                    [routerLink]="[
+                      '/items/detalle',
+                      product.tipo,
+                      product.id_prod
+                    ]"
+                    class="toggle-info btn"
+                  >
+                    <span class="left"></span>
+                    <span class="right"></span>
+                  </a>
+                  <h2>
+                    {{ product.titulo }}
+                    <small>{{ product.precio }} €</small>
+                  </h2>
+                </div>
+                <div class="card-flap flap1">
+                  <!-- <div class="card-description">
+                    {{ product.descripcion }}
+                  </div> -->
+                </div>
+              </div>
+              <!---->
+              <!---->
+            </div>
+          </div>
+          <div class="d-none d-sm-block d-md-none">
+            <div class="slide-box">
+              <!-- PANTALLA PEQUEÑA -->
+              <!---->
+              <div
+                class="card"
+                *ngFor="let product of arrProducts | slice: 0:2"
+              >
+                <div class="card__image-holder">
+                  <img
+                    [routerLink]="[
+                      '/items/detalle',
+                      product.tipo,
+                      product.id_prod
+                    ]"
+                    class="card__image"
+                    src="{{ product.imagen }}"
+                    alt="{{ product.titulo }}"
+                  />
+                </div>
+                <div class="card-title">
+                  <a
+                    [routerLink]="[
+                      '/items/detalle',
+                      product.tipo,
+                      product.id_prod
+                    ]"
+                    class="toggle-info btn"
+                  >
+                    <span class="left"></span>
+                    <span class="right"></span>
+                  </a>
+                  <h2>
+                    {{ product.titulo }}
+                    <small>{{ product.precio }} €</small>
+                  </h2>
+                </div>
+                <div class="card-flap flap1">
+                  <!-- <div class="card-description">
+                    {{ product.descripcion }}
+                  </div> -->
+                </div>
+              </div>
+              <!---->
+              <!---->
+            </div>
+          </div>
+          <div class="d-block d-sm-none">
+            <!-- PANTALLA ENANA -->
+            <!---->
+            <div class="card" *ngFor="let product of arrProducts | slice: 0:1">
+              <div class="card__image-holder">
+                <img
+                  [routerLink]="[
+                    '/items/detalle',
+                    product.tipo,
+                    product.id_prod
+                  ]"
+                  class="card__image"
+                  src="{{ product.imagen }}"
+                  alt="{{ product.titulo }}"
+                />
+              </div>
+              <div class="card-title">
+                <a
+                  [routerLink]="[
+                    '/items/detalle',
+                    product.tipo,
+                    product.id_prod
+                  ]"
+                  class="toggle-info btn"
+                >
+                  <span class="left"></span>
+                  <span class="right"></span>
+                </a>
+                <h2>
+                  {{ product.titulo }}
+                  <small>{{ product.precio }} €</small>
+                </h2>
+              </div>
+              <div class="card-flap flap1">
+                <div class="card-description">
+                  {{ product.descripcion }}
+                </div>
+              </div>
+            </div>
+            <!---->
+            <!---->
+          </div>
+        </div>
+        <div class="carousel-item">
+          <div class="d-none d-lg-block">
+            <div class="slide-box">
+              <!--------------------------------------------------------------------->
+              <!--------------------------------------------------------------------->
+              <!-------------------------------SLIDE 2------------------------------->
+
+              <!-- PANTALLA GRANDE -->
+              <!---->
+              <div
+                class="card"
+                *ngFor="let product of arrProducts | slice: 5:9"
+              >
+                <div class="card__image-holder">
+                  <img
+                    [routerLink]="[
+                      '/items/detalle',
+                      product.tipo,
+                      product.id_prod
+                    ]"
+                    class="card__image"
+                    src="{{ product.imagen }}"
+                    alt="{{ product.titulo }}"
+                  />
+                </div>
+                <div class="card-title">
+                  <a
+                    [routerLink]="[
+                      '/items/detalle',
+                      product.tipo,
+                      product.id_prod
+                    ]"
+                    class="toggle-info btn"
+                  >
+                    <span class="left"></span>
+                    <span class="right"></span>
+                  </a>
+                  <h2>
+                    {{ product.titulo }}
+                    <small>{{ product.precio }} €</small>
+                  </h2>
+                </div>
+                <div class="card-flap flap1">
+                  <!-- <div class="card-description">
+                    {{ product.descripcion }}
+                  </div> -->
+                </div>
+              </div>
+              <!---->
+              <!---->
+            </div>
+          </div>
+          <div class="d-none d-md-block d-lg-none">
+            <div class="slide-box">
+              <!-- PANTALLA MEDIANA -->
+              <!---->
+              <div
+                class="card"
+                *ngFor="let product of arrProducts | slice: 5:8"
+              >
+                <div class="card__image-holder">
+                  <img
+                    [routerLink]="[
+                      '/items/detalle',
+                      product.tipo,
+                      product.id_prod
+                    ]"
+                    class="card__image"
+                    src="{{ product.imagen }}"
+                    alt="{{ product.titulo }}"
+                  />
+                </div>
+                <div class="card-title">
+                  <a
+                    [routerLink]="[
+                      '/items/detalle',
+                      product.tipo,
+                      product.id_prod
+                    ]"
+                    class="toggle-info btn"
+                  >
+                    <span class="left"></span>
+                    <span class="right"></span>
+                  </a>
+                  <h2>
+                    {{ product.titulo }}
+                    <small>{{ product.precio }} €</small>
+                  </h2>
+                </div>
+                <div class="card-flap flap1">
+                  <!-- <div class="card-description">
+                    {{ product.descripcion }}
+                  </div> -->
+                </div>
+              </div>
+              <!---->
+              <!---->
+            </div>
+          </div>
+          <div class="d-none d-sm-block d-md-none">
+            <div class="slide-box">
+              <!-- PANTALLA PEQUEÑA -->
+              <!---->
+              <div
+                class="card"
+                *ngFor="let product of arrProducts | slice: 5:7"
+              >
+                <div class="card__image-holder">
+                  <img
+                    [routerLink]="[
+                      '/items/detalle',
+                      product.tipo,
+                      product.id_prod
+                    ]"
+                    class="card__image"
+                    src="{{ product.imagen }}"
+                    alt="{{ product.titulo }}"
+                  />
+                </div>
+                <div class="card-title">
+                  <a
+                    [routerLink]="[
+                      '/items/detalle',
+                      product.tipo,
+                      product.id_prod
+                    ]"
+                    class="toggle-info btn"
+                  >
+                    <span class="left"></span>
+                    <span class="right"></span>
+                  </a>
+                  <h2>
+                    {{ product.titulo }}
+                    <small>{{ product.precio }} €</small>
+                  </h2>
+                </div>
+                <div class="card-flap flap1">
+                  <!-- <div class="card-description">
+                    {{ product.descripcion }}
+                  </div> -->
+                </div>
+              </div>
+              <!---->
+              <!---->
+            </div>
+          </div>
+          <div class="d-block d-sm-none">
+            <!-- PANTALLA ENANA -->
+            <!---->
+            <div class="card" *ngFor="let product of arrProducts | slice: 5:6">
+              <div class="card__image-holder">
+                <img
+                  [routerLink]="[
+                    '/items/detalle',
+                    product.tipo,
+                    product.id_prod
+                  ]"
+                  class="card__image"
+                  src="{{ product.imagen }}"
+                  alt="{{ product.titulo }}"
+                />
+              </div>
+              <div class="card-title">
+                <a
+                  [routerLink]="[
+                    '/items/detalle',
+                    product.tipo,
+                    product.id_prod
+                  ]"
+                  class="toggle-info btn"
+                >
+                  <span class="left"></span>
+                  <span class="right"></span>
+                </a>
+                <h2>
+                  {{ product.titulo }}
+                  <small>{{ product.precio }} €</small>
+                </h2>
+              </div>
+              <div class="card-flap flap1">
+                <div class="card-description">
+                  {{ product.descripcion }}
+                </div>
+              </div>
+            </div>
+            <!---->
+            <!---->
+          </div>
+        </div>
+      </div>
+
+      <!------------------------------------------------------------------------------->
+      <!------------------------------------------------------------------------------->
+      <!------------------------------- CONTROLES LOCOS ------------------------------->
+      <a
+        class="carousel-control-prev"
+        href="#carousel"
+        role="button"
+        data-slide="prev"
+      >
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a
+        class="carousel-control-next"
+        href="#carousel"
+        role="button"
+        data-slide="next"
+      >
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+      </a>
+    </div>
+  </div>
+</div>
+<!-- FIN CARRUSEL RECYCLED -->

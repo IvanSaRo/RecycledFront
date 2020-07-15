@@ -1,0 +1,187 @@
+<div class="todoMenosFooter">
+  <nav class="container-fluid nav">
+    <div class="logo">
+      <div>
+        <a href="" [routerLink]="['/index']">
+          <i class="material-icons">
+            eco
+          </i>
+          <img src="../assets/logos/final/Logo002.png" alt="" />
+        </a>
+      </div>
+    </div>
+
+    <div class="wrap">
+      <div class="search">
+        <input id="busqueda" [(ngModel)]="textoBusqueda" type="text" class="searchTerm"
+          placeholder="¿Qué estás buscando?" (keydown)="enterBuscar($event)" />
+        <button type="submit" class="searchButton" (click)="buscarTexto()">
+          <i class="material-icons">search</i>
+        </button>
+      </div>
+    </div>
+
+
+    <div class="icons">
+      <a href="" [routerLink]="['/users/' + [idUser]]">
+        <i class="material-icons">
+          account_circle
+        </i>
+      </a>
+      <a href="" [routerLink]="['/users/mensajes/' + [idUser] + '/0']">
+        <i class="material-icons">
+          chat
+        </i>
+      </a>
+      <a href="" [routerLink]="['users/:usuarioId/newproducto']">
+        <i class="material-icons">
+          add_circle
+        </i>
+      </a>
+    </div>
+  </nav>
+
+  <app-categorias-menu></app-categorias-menu>
+  <router-outlet></router-outlet>
+</div>
+
+<!-- Footer -->
+<div class="menuFooter">
+  <div class="icons">
+    <a href="" [routerLink]="['/users/' + [idUser]]">
+      <i class="material-icons">
+        account_circle
+      </i>
+    </a>
+    <a href="" [routerLink]="['users/:usuarioId/newproducto']">
+      <i class="material-icons">
+        add_circle
+      </i>
+    </a>
+    <a href="" [routerLink]="['/users/mensajes/' + [idLocalStorage]]">
+      <i class="material-icons">
+        chat
+      </i>
+    </a>
+  </div>
+</div>
+
+<!-------------------------------------------------------------------------------------------------------------------->
+<!-------------------------------------------------------------------------------------------------------------------->
+<!-------------------------------------------------------------------------------------------------------------------->
+<!-- FOOTER Start
+      ================================================== -->
+
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4">
+        <div class="block clearfix">
+          <a [routerLink]="['/index']">
+            <img class="footer-logo" src="../assets/logos/final/Logo002.png" alt="Recycled" />
+          </a>
+          <p>
+            Recycled, tu marketplace de compra-venta de Productos Reciclados. En
+            Recycled nos dedicamos al Reciclaje, Upcycling y Downcycling.
+            Protegiendo la naturaleza desde 2020.
+          </p>
+          <h4 [routerLink]="['/about']" class="connect-heading">
+            ABOUT US
+          </h4>
+          <ul class="social-icon">
+            <li>
+              <a class="icon" [routerLink]="['/about']">
+                <i class="material-icons">live_help</i>
+              </a>
+            </li>
+            <li>
+              <a class="icon" href="https://github.com/albertoroda/Recycled">
+                <i class="material-icons">code</i>
+              </a>
+            </li>
+            <li>
+              <a class="icon" [routerLink]="['/producto']">
+                <i class="material-icons">shopping_basket</i>
+              </a>
+            </li>
+            <li>
+              <a class="icon" [routerLink]="['/material']">
+                <i class="material-icons">format_paint</i>
+              </a>
+            </li>
+            <li>
+              <a class="icon" [routerLink]="['/blog']">
+                <i class="material-icons">child_care</i>
+              </a>
+            </li>
+          </ul>
+          <!-- End Of /.social-icon -->
+        </div>
+        <!-- End Of /.block -->
+      </div>
+      <!-- End Of /.Col-md-4 -->
+      <div class="col-md-4">
+        <div class="block">
+          <h4>CONTACTO</h4>
+          <p>
+            <i class="material-icons">eco</i>
+            <span>Recycl€d</span> 1000 Ljubljana Celovska cesta 135, Wakanda
+          </p>
+          <p>
+            <i class="material-icons">call</i> <span>Phone:</span> (+34) 40 123
+            456
+          </p>
+
+          <p>
+            <i class="material-icons">smartphone</i>
+            <span>Mobile:</span> (+34) 40 654 123 651
+          </p>
+
+          <p class="mail">
+            <i class="material-icons">email</i>Email:
+            <span>info@recycled.com</span>
+          </p>
+        </div>
+        <!-- End Of /.block -->
+      </div>
+      <!-- End Of Col-md-3 -->
+      <div class="col-md-4">
+        <div class="block">
+          <h4>OTROS PRODUCTOS</h4>
+          <div class="media">
+            <a class="pull-left">
+              <img *ngFor="let product of arrProducts | slice: 0:6" class="media-object"
+                [routerLink]="['/items/detalle', product.tipo, product.id_prod]" src="{{ product.imagen }}"
+                alt="{{ product.titulo }}" />
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER-BOTTOM Start
+          ================================================== -->
+
+  <div class="footer-bottom">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <p class="avisoLegal">
+            Utilizamos cookies propias y de terceros para analizar tus hábitos
+            de navegación con fines estadísticos y cookies de terceros para
+            poder interactuar con redes sociales. Puedes aceptar la
+            configuración de cookies por defecto o desactivar el tipo de cookies
+            que no quieres que se instalen en tu navegador.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<footer class="footer">
+  <div class="rights">
+    <p>© Copyright 2020 Recycled - All rights reserved.</p>
+  </div>
+</footer>
